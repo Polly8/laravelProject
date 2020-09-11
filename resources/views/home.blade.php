@@ -67,8 +67,8 @@
 
                                 <div class="products-columns__item__thumbnail">
                                     <a href="{{ route('product.show', ['id' => $products[$i]->id]) }}" class="products-columns__item__thumbnail__link">
-                                        <img src="../../public/image.php/?id={{ $products[$i]->id }}" alt="No image" class="products-columns__item__thumbnail__img">
-                                        {{--<img src="../../public/img/cover/game-1.jpg" alt="Preview-image" class="products-columns__item__thumbnail__img">--}}
+
+                                        <img src="/storage/uploads/{{ $products[$i]->id }}.jpg" alt="Preview-image" class="products-columns__item__thumbnail__img">
                                     </a>
                                 </div>
 

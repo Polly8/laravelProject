@@ -15,11 +15,11 @@ class OrderController extends Controller
 {
 
 
-	function index(){
+	function index(Request $request){
 
-		$name = htmlspecialchars($_GET['name']);
-		$email = htmlspecialchars($_GET['email']);
-		$productId = htmlspecialchars($_GET['id']);
+		$name = $request->get('name');
+		$email = $request->get('email');
+		$productId = $request->get('id');
 
 
 		Mail::to(\Auth::user())->send(new Order(['name' => $name, 'email' => $email, 'product' => $productId]));

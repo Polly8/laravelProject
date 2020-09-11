@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Categories;
 use App\Products;
+//use Faker\Provider\File;
 use Illuminate\Http\Request;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManager;
+
 
 class ProductController extends Controller
 {
-
-	function index(){
-
-	}
 
 
     function show($id){
@@ -50,12 +51,12 @@ class ProductController extends Controller
 
 
 
-	function add(){
+	function add(Request $request){
 
-		$name = htmlspecialchars($_POST['name']);
-		$category = htmlspecialchars($_POST['category']);
-		$price = htmlspecialchars($_POST['price']);
-		$description = htmlspecialchars($_POST['description']);
+		$name = $request->post('name');
+		$category = $request->post('category');
+		$price = $request->post('price');
+		$description = $request->post('description');
 
 
 
@@ -73,17 +74,23 @@ class ProductController extends Controller
 
 			]);
 
-
-			$postId = $newProduct['id'];
-
-
-			if (!empty($_FILES['picture']['tmp_name'])) {
+		
 
 
-				//dd($_SERVER['DOCUMENT_ROOT']);
+			if($request->file()){
 
-				$fileContent = file_get_contents($_FILES['picture']['tmp_name']);
-				(file_put_contents('C:/OSPanel/images/'. $postId . '.png', $fileContent));
+
+				$fileName = $newProduct->id . '.jpg';
+				$filePath = $request->file('picture')->storeAs('uploads', $fileName, 'public');
+
+
+//				$manager = new ImageManager(array('driver' => 'gd'));
+//
+//
+//				$image = $manager->make('/public/storage/uploads/' . $fileName)->resize(200, null, function ($constraint) {
+//
+//					$constraint->aspectRatio();
+//				});
 
 
 			}

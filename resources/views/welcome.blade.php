@@ -37,7 +37,6 @@
                     </li>
                 @endguest
 
-
             @stop
 
 
@@ -77,7 +76,6 @@
                                         <div class="products-columns__item__description"><span class="products-price">{{$products[$i]->price}} руб</span>
                                             <a href="{{ route('product.buy', ['id' => $products[$i]->id]) }}" class="btn btn-blue">Купить</a>
                                         </div>
-
                                     </div>
 
 

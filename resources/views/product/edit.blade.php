@@ -51,14 +51,14 @@
                 <form action="{{ route('editproduct') }}" class="order-form" method="get">
 
 
-                    Название<input type="text" name="name" value="{{$item->name}}">
+                    Название<input type="text" name="name" value="{{$item->name}}" required>
                     Категория<select name="category" id="">
                         @foreach($categories as $category)
                             <option value="{{$category->name}}">{{$category->name}}</option>
                         @endforeach
                     </select>
-                    Цена<input type="text" name="price" value="{{$item->price}}">
-                    Описание<textarea name="description" id="" cols="30" rows="5" placeholder="{{$item->description}}"></textarea>
+                    Цена<input type="text" name="price" value="{{$item->price}}" required>
+                    Описание<textarea name="description" id="" cols="30" rows="5" placeholder="{{$item->description}}" required></textarea>
                     <input name="picture" type="file">
 
                     <input type="text" name="id" value="{{$item->id}}" style="display:none">

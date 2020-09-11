@@ -18,10 +18,8 @@ class MyordersController extends Controller
 
 		$allOrders = [];
 
-		$email = \Auth::user()->email;
 
-
-		$datas = Buying::query()->where('email', $email)->get();
+		$datas = Buying::query()->where('email', auth()->user()->email)->get();
 
 
 

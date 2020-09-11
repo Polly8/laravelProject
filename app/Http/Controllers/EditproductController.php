@@ -10,18 +10,18 @@ class EditproductController extends Controller
 {
 
 
-	function index(){
+	function index(Request $request){
 
-		$id = htmlspecialchars($_GET['id']);
+		$id = $request->get('id');
 
 
 		$item = Products::query()->where('id', $id)->first();
 
 
-		$item['name'] = htmlspecialchars($_GET['name']);
-		$item['category'] = htmlspecialchars($_GET['category']);
-		$item['price'] = htmlspecialchars($_GET['price']);
-		$item['description'] = htmlspecialchars($_GET['description']);
+		$item['name'] = $request->get('name');
+		$item['category'] = $request->get('category');
+		$item['price'] = $request->get('price');
+		$item['description'] = $request->get('description');
 
 		$item->save();
 

@@ -53,8 +53,8 @@
             <form action="{{ route('order') }}" class="order-form" method="get">
 
 
-                <b>Ваше имя:</b> <input type="text" name="name" @if(Auth::user()) value="{{Auth::user()->name}}" @endif class="order-input">
-                <b>Ваш e-mail:</b> <input type="text" name="email" @if(Auth::user()) value="{{Auth::user()->email}}" @endif class="order-input">
+                <b>Ваше имя:</b> <input type="text" name="name" @if(Auth::user()) value="{{Auth::user()->name}}" @endif class="order-input" required>
+                <b>Ваш e-mail:</b> <input type="text" name="email" @if(Auth::user()) value="{{Auth::user()->email}}" @endif class="order-input" required>
                 <input type="text" name="id" value="{{$item->id}}" style="display:none">
                 <input type="submit" value="Оставить заявку" class="order-input">
 

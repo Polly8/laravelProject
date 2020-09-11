@@ -72,8 +72,8 @@
 
                                             <form action="{{ route('category.edit', ['title' => $caterory->name])}}" method="get" style="font-size:11px; margin-right:10px;">
 
-                                                <input type="text" name="name" value="{{$caterory->name}}">
-                                                <textarea type="text" name="description" cols="21" rows="2" placeholder="{{$caterory->description}}"></textarea>
+                                                <input type="text" name="name" value="{{$caterory->name}}" required>
+                                                <textarea type="text" name="description" cols="21" rows="2" placeholder="{{$caterory->description}}" required></textarea>
 
                                                 <input type="submit" value="edit" style="background-color:yellow;">
                                             </form>
@@ -99,7 +99,7 @@
                                 <form action="{{ route('category.add') }}" method="get">
 
                                     Название<input type="text" name="newcategory" required>
-                                    Описание<textarea type="text" name="description" id="" cols="22" rows="3"></textarea>
+                                    Описание<textarea type="text" name="description" id="" cols="22" rows="3" required></textarea>
                                     <input type="submit" value="Добавить категорию" style="background-color:lawngreen;">
 
                                 </form>
@@ -142,14 +142,14 @@
 
                 <form enctype="multipart/form-data" action="{{ route('product.add') }}" method="post" style="display:flex; flex-direction:column; width:400px;">
                     @csrf
-                    Название<input type="text" name="name">
-                    Категория<select name="category" id="">
+                    Название<input type="text" name="name" required>
+                    Категория<select name="category" id="" required>
                         @foreach($categories as $category)
                             <option value="{{$category->name}}">{{$category->name}}</option>
                         @endforeach
                     </select>
-                    Цена<input type="text" name="price">
-                    Описание<textarea name="description" id="" cols="30" rows="5"></textarea>
+                    Цена<input type="text" name="price" required>
+                    Описание<textarea name="description" id="" cols="30" rows="5" required></textarea>
                     <input name="picture" type="file">
                     <input type="submit" value="Добавить товар">
 

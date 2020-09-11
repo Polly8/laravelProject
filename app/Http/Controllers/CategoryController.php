@@ -9,10 +9,6 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
 
-	function index(){
-
-	}
-
 
 	function show($title){
 
@@ -26,10 +22,10 @@ class CategoryController extends Controller
 	}
 
 
-	function add(){
+	function add(Request $request){
 
-		$newcategory = htmlspecialchars($_GET['newcategory']);
-		$description = htmlspecialchars($_GET['description']);
+		$newcategory = $request->get('newcategory');
+		$description = $request->get('description');
 
 		$category = Categories::query()->where('name', $newcategory)->get();
 
@@ -70,13 +66,13 @@ class CategoryController extends Controller
 
 
 
-	function edit($title){
+	function edit($title, Request $request){
 
-		$item = Categories::query()->where('name', $title)->first();
+		$item = Categories::where('name', $title)->firstOrFail();
 
 
-		$item['name'] = htmlspecialchars($_GET['name']);
-		$item['description'] = htmlspecialchars($_GET['description']);
+		$item->name = $request->get('name');
+		$item->description = $request->get('description');
 
 		$item->save();
 
